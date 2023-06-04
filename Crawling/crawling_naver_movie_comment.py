@@ -22,11 +22,14 @@ driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]
 comment_index = 1
 while True:
     #관람객 코멘트 부분 찾기
-    comment = driver.find_elements(By.XPATH,'/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) +']/div[2]/div/span[2]')
+    comment = driver.find_elements(By.XPATH,'/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[2]/div/span[2]')
+    #관람객 별점 부분 찾기
+    star_score = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[1]/div/div[2]')
     try:
         if len(comment) > 0:
-            print(len(comment))
-            print(comment[0].text)  #코멘트 출력
+            #print(len(comment))
+            print("별점:", star_score[0].text[13:]) #별점 출력
+            print("감상평:", comment[0].text)  #코멘트 출력
             comment_index += 1
     except:
         break   #크롤링 종료
