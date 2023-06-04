@@ -29,18 +29,24 @@ while True:
     star_score = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[1]/div/div[2]')
     #리뷰 작성일 부분 찾기
     writing_date = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/dl/dd[2]')
+    #공감수 부분 찾기
+    upvote = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[3]/button[1]/span')
+    #비공감수 부분 찾기
+    downvote = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[3]/button[2]/span')
     try:
         if len(comment) > 0:
             #print(len(comment))
             print("================================================================================================")
-            print("작성일:",writing_date[0].text[0:11])    #작성일 출력
+            print("작성일:", writing_date[0].text[0:11])    #작성일 출력
             print("별점:", star_score[0].text[13:]) #별점 출력
             print("감상평:", comment[0].text)  #코멘트 출력
+            print("공감수:", upvote[0].text, end=' ')  #공감수 출력
+            print("비공감수:", downvote[0].text)    #비공감수 출력
             print("리뷰 총합:", comment_index)
             comment_index += 1
     except:
         break   #크롤링 종료
-    time.sleep(0.5)
+    time.sleep(0.2)
     #스크롤 내리기 위해 영화 평점 창 부분으로 초점 이동
     scroll_origin = ScrollOrigin.from_viewport(140, 641)
     #스크롤 내리기
