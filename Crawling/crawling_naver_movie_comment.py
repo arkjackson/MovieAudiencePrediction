@@ -1,6 +1,8 @@
 #영화 리뷰 크롤링 프로그램
 
 import time
+from os import write
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
@@ -25,11 +27,16 @@ while True:
     comment = driver.find_elements(By.XPATH,'/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[2]/div/span[2]')
     #관람객 별점 부분 찾기
     star_score = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/div[1]/div/div[2]')
+    #리뷰 작성일 부분 찾기
+    writing_date = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div[6]/ul/li[' + str(comment_index) + ']/dl/dd[2]')
     try:
         if len(comment) > 0:
             #print(len(comment))
+            print("================================================================================================")
+            print("작성일:",writing_date[0].text[0:11])    #작성일 출력
             print("별점:", star_score[0].text[13:]) #별점 출력
             print("감상평:", comment[0].text)  #코멘트 출력
+            print("리뷰 총합:", comment_index)
             comment_index += 1
     except:
         break   #크롤링 종료
