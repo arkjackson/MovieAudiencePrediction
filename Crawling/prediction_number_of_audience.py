@@ -27,35 +27,44 @@ diff_verb = 100000
 v_i = 0
 diff_adj = 100000
 a_i = 0
-
-# 예측 대상
-movie_name_list = ["소울", "모가디슈", "남산의 부장들", "블랙위도우", "닥터두리틀"]
-# 입력 화면
-print("아래에 보이는 영화 중 예측을 원하는 영화의 번호를 입력하세요!")
-print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4])
-movie_num = int(input())
 # 예측 대상에 대한 형태소 분석 결과
 movie_mor_list = [[64679, 25597, 15681], [111933, 36637, 25878], [129314, 37999, 22231],
                   [50165, 13969, 10777], [23362, 7283, 6422]]
 # 예측 대상의 실제 관객수
 movie_real_number_audience = [204, 361, 475, 296, 160]
-# 가장 오차가 적을 떄의 관객 수 찾기
-for i in range(len(noun_list)):
-    if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):
-        diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
-        n_i = i
-    if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):
-        diff_verb = abs(movie_mor_list[movie_num - 1][1] - verb_list[i])
-        v_i = i
-    if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):
-        diff_adj = abs(movie_mor_list[movie_num - 1][2] - adj_list[i])
-        a_i = i
-# 리스트화
-index_list = [n_i, v_i, a_i]
-# 딜레이
-print(movie_name_list[movie_num - 1] + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
-time.sleep(3)
-# 결과 화면
-print("---------------" + movie_name_list[movie_num - 1] + " 관객수 예측-------------------")
-print("실제 관객수: " + str(movie_real_number_audience[movie_num - 1]) + "만 명")
-print_prediction_message(movie_real_number_audience[movie_num - 1], index_list)
+# 예측 대상
+movie_name_list = ["소울", "모가디슈", "남산의 부장들", "블랙위도우", "닥터두리틀"]
+while True:
+    # 입력 화면
+    print("아래에 보이는 영화 중 예측을 원하는 영화의 번호를 입력하세요!")
+    print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4])
+    movie_num = int(input())
+    # 가장 오차가 적을 떄의 관객 수 찾기
+    for i in range(len(noun_list)):
+        if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):
+            diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
+            n_i = i
+        if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):
+            diff_verb = abs(movie_mor_list[movie_num - 1][1] - verb_list[i])
+            v_i = i
+        if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):
+            diff_adj = abs(movie_mor_list[movie_num - 1][2] - adj_list[i])
+            a_i = i
+    # 리스트화
+    index_list = [n_i, v_i, a_i]
+    # 딜레이
+    print(movie_name_list[movie_num - 1] + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
+    time.sleep(2)
+    # 결과 화면
+    print("---------------" + movie_name_list[movie_num - 1] + " 관객수 예측-------------------")
+    print("실제 관객수: " + str(movie_real_number_audience[movie_num - 1]) + "만 명")
+    print_prediction_message(movie_real_number_audience[movie_num - 1], index_list)
+    print("\n다른 영화 예측을 원하면 ""y""키를 입력하세요!",end=' ')
+    print("프로그램 종료는 ""n""키를 입력하세요!")
+    key = input()
+    if key == 'n' or key == 'N':
+        print("프로그램이 종료됩니다.")
+        time.sleep(2)
+        break
+    elif key == 'y' or key == 'Y':
+        continue
