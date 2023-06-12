@@ -38,33 +38,43 @@ while True:
     # 입력 화면
     print("아래에 보이는 영화 중 예측을 원하는 영화의 번호를 입력하세요!")
     print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4])
-    movie_num = int(input())
-    # 가장 오차가 적을 떄의 관객 수 찾기
-    for i in range(len(noun_list)):
-        if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):
-            diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
-            n_i = i
-        if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):
-            diff_verb = abs(movie_mor_list[movie_num - 1][1] - verb_list[i])
-            v_i = i
-        if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):
-            diff_adj = abs(movie_mor_list[movie_num - 1][2] - adj_list[i])
-            a_i = i
-    # 리스트화
-    index_list = [n_i, v_i, a_i]
-    # 딜레이
-    print(movie_name_list[movie_num - 1] + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
-    time.sleep(2)
-    # 결과 화면
-    print("---------------" + movie_name_list[movie_num - 1] + " 관객수 예측-------------------")
-    print("실제 관객수: " + str(movie_real_number_audience[movie_num - 1]) + "만 명")
-    print_prediction_message(movie_real_number_audience[movie_num - 1], index_list)
-    print("\n다른 영화 예측을 원하면 ""y""키를 입력하세요!",end=' ')
-    print("프로그램 종료는 ""n""키를 입력하세요!")
-    key = input()
-    if key == 'n' or key == 'N':
-        print("프로그램이 종료됩니다.")
+    movie_num = input()
+    if movie_num == "1" or movie_num == "2" or movie_num == "3" or movie_num == "4" or movie_num == "5":
+        movie_num = int(movie_num)
+        # 가장 오차가 적을 떄의 관객 수 찾기
+        for i in range(len(noun_list)):
+            if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):
+                diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
+                n_i = i
+            if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):
+                diff_verb = abs(movie_mor_list[movie_num - 1][1] - verb_list[i])
+                v_i = i
+            if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):
+                diff_adj = abs(movie_mor_list[movie_num - 1][2] - adj_list[i])
+                a_i = i
+        # 리스트화
+        index_list = [n_i, v_i, a_i]
+        # 딜레이
+        print("'" + movie_name_list[movie_num - 1] + "'" + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
         time.sleep(2)
-        break
-    elif key == 'y' or key == 'Y':
+        # 결과 화면
+        print("---------------" + movie_name_list[movie_num - 1] + " 관객수 예측-------------------")
+        print("실제 관객수: " + str(movie_real_number_audience[movie_num - 1]) + "만 명")
+        print_prediction_message(movie_real_number_audience[movie_num - 1], index_list)
+    else:
+        print("잘못된 입력입니다! 다시 입력해 주세요!\n")
+        time.sleep(1)
         continue
+    while True:
+        print("\n다른 영화 예측: ""y""키",end='  ')
+        print("프로그램 종료: ""n""키")
+        key = input()
+        if key == 'n' or key == 'N':
+            print("프로그램이 종료됩니다.")
+            time.sleep(2)
+            exit()
+        elif key == 'y' or key == 'Y':
+            break
+        else:
+            print("잘못된 입력입니다! 다시 입력해 주세요!")
+            time.sleep(1)
