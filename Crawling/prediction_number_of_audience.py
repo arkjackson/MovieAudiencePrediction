@@ -29,17 +29,18 @@ diff_adj = 100000
 a_i = 0
 # 예측 대상에 대한 형태소 분석 결과
 movie_mor_list = [[64679, 25597, 15681], [111933, 36637, 25878], [129314, 37999, 22231],
-                  [50165, 13969, 10777], [23362, 7283, 6422]]
+                  [50165, 13969, 10777], [23362, 7283, 6422], [117041, 42908, 32836], [173520, 55771, 30931], [263108, 102628, 63526]]
 # 예측 대상의 실제 관객수
-movie_real_number_audience = [204, 361, 475, 296, 160]
+movie_real_number_audience = [204, 361, 475, 296, 160, 153, 819, 1626]
 # 예측 대상
-movie_name_list = ["소울", "모가디슈", "남산의 부장들", "블랙위도우", "닥터두리틀"]
+movie_name_list = ["소울", "모가디슈", "남산의 부장들", "블랙위도우", "닥터두리틀", "외계인", "탑건:매버릭", "극한직업"]
+movie_num_list = ['1', '2', '3', '4', '5', '6', '7', '8']
 while True:
     # 입력 화면
     print("아래에 보이는 영화 중 예측을 원하는 영화의 번호를 입력하세요!")
-    print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4])
+    print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4] + "   6. " + movie_name_list[5] + "   7. " + movie_name_list[6] + "   8. " + movie_name_list[7])
     movie_num = input()
-    if movie_num == "1" or movie_num == "2" or movie_num == "3" or movie_num == "4" or movie_num == "5":
+    if movie_num in movie_num_list:
         movie_num = int(movie_num)
         # 가장 오차가 적을 떄의 관객 수 찾기
         for i in range(len(noun_list)):
