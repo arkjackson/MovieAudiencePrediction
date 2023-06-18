@@ -4,7 +4,7 @@
     * [프로젝트 소개](#프로젝트-소개)
       * [Train 데이터 영화](#학습-데이터-영화)
       * [Test 데이터 영화](#테스트-데이터-영화)
-    * [Requirements](#Requriements)
+    * [Requirements](#Requirements)
     * [프로그램 사용법](#프로그램-사용법)
     * [Release](#Release)
     * [Contacts](#Contacts)
