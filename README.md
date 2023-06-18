@@ -2,6 +2,9 @@
 
 * MovieAudiencePrediction
     * [프로젝트 소개](#프로젝트-소개)
+      * [Train 데이터 영화](#학습-데이터-영화)
+      * [Test 데이터 영화](#테스트-데이터-영화)
+    * [Requirements](#Requriements)
     * [프로그램 사용법](#프로그램-사용법)
     * [Release](#Release)
     * [Contacts](#Contacts)
@@ -107,6 +110,16 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 - 탑건:메버릭
 
 - 극한직업
+
+## Requirements
+
+pandas == 1.4.4
+
+PyMySQL = 1.0.2
+
+selenium == 4.10.0
+
+konlpy == 0.6.0
 
 ## 프로그램 사용법
 
