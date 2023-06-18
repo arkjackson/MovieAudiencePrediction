@@ -15,13 +15,13 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 ### 설명
 
-1. 영화별 리뷰 데이터를 수집후 [학습 데이터](#학습-데이터-영화(29개))와 [테스트 데이터](#테스트-데이터-영화(8개))로 분류
+1. 영화별 리뷰 데이터를 수집후 [학습 데이터](#학습-데이터-영화)와 [테스트 데이터](#테스트-데이터-영화)로 분류
 
 2. 수집한 리뷰에 대하여 형태소 분석 수행
 
 3. 분석 결과를 활용하여 테스트 데이터 영화에 대하여 관객수 예측 수행
 
-#### 학습 데이터 영화(29개)
+#### 학습 데이터 영화
 
 - 1987
 
@@ -81,7 +81,7 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 - 히트맨
 
-#### 테스트 데이터 영화(8개)
+#### 테스트 데이터 영화
 
 - 소울
 
@@ -103,8 +103,6 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 release에 포함된 .exe파일을 다운 받아 실행시켜 사용할 수 있습니다.
 
-### [Version - 0.4](https://github.com/arkjackson/MovieAudiencePrediction/releases/tag/v0.4)
-
 아래의 화면이 나오면 정상적으로 프로그램이 열렸으며 안내 메시지에 따라 프로그램을 실행시킬 수 있습니다.
 
 <img width="697" alt="화면 캡처 2023-06-18 141304" src="https://github.com/arkjackson/MovieAudiencePrediction/assets/111726392/42fe90f8-a792-4555-a5c6-907203b80e3f">
@@ -114,4 +112,28 @@ release에 포함된 .exe파일을 다운 받아 실행시켜 사용할 수 있�
 
 <img width="713" alt="화면 캡처 2023-06-18 195340" src="https://github.com/arkjackson/MovieAudiencePrediction/assets/111726392/c9fef10d-249c-493b-a80c-4fa123138d22">
 
+## Release
 
+* [v0.4](https://github.com/arkjackson/MovieAudiencePrediction/releases/tag/v0.4)
+    
+    - 긍정 명사, 부정 명사를 바탕으로 관객수 예측
+
+* [v0.3](https://github.com/arkjackson/MovieAudiencePrediction/releases/tag/v0.3)
+
+    - 명사, 동사, 형용사 총 합의 평균값으로 관객수 예측
+
+* [v0.2](https://github.com/arkjackson/MovieAudiencePrediction/releases/tag/v0.2)
+
+    - 테스트 데이터 영화 3개 추가
+
+* [v0.1](https://github.com/arkjackson/MovieAudiencePrediction/releases/tag/0.1)
+    
+    - 초기 모델 릴리즈
+
+## Contacts
+
+MovieAudiencePrediction 관련 이슈는 [이곳](https://github.com/arkjackson/MovieAudiencePrediction/issues)에 등록해주시기 바랍니다.
+
+## License
+
+라이센스가 필요시 기입
