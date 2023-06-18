@@ -1,6 +1,13 @@
 # MovieAudiencePrediction
 
-## 💻 프로젝트 소개
+* MovieAudiencePrediction
+    * [프로젝트 소개](#프로젝트-소개)
+    * [프로그램 사용법](#프로그램-사용법)
+    * [Release](#Release)
+    * [Contacts](#Contacts)
+    * [License](#License)
+      
+## 프로젝트 소개
 
 구 네이버 영화 사이트 리뷰 데이터를 이용하여 관객수를 예측하는 프로그램입니다.
 
@@ -99,7 +106,7 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 - 극한직업
 
-## 🖱 프로그램 사용법
+## 프로그램 사용법
 
 release에 포함된 .exe파일을 다운 받아 실행시켜 사용할 수 있습니다.
 
