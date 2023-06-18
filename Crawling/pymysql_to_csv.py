@@ -1,5 +1,4 @@
 #데이터 추출 프로그램
-
 import pandas as pd
 import pymysql
 

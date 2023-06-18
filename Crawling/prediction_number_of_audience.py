@@ -1,11 +1,7 @@
-# ver0.4
-# 긍정, 부정 명사 단어 개수를 베이스로 하여 관객 수 예측
-# ver 0.1
-# 명사, 동사, 형용사 수 별로 기준 데이터에 가장 가까운 값이 영화의 관객 수로 예측하는 프로그램
-
 import pandas as pd
 import time
 
+# 결과 메시지 출력
 def print_prediction_message(number_audience, idx_lst):
     morpheme = ['명사', '동사', '형용사', '품사 평균 개수', '긍정적 명사', '부정적 명사']
     for i in range(len(morpheme)):
@@ -26,11 +22,11 @@ def calculate_avg_number(lst):
 
 # 관객 수에 따라 품사수 저장
 df = pd.read_csv('C:/Users/82104/Desktop/morpheme_result.csv')
-# 긍정, 부정 명사 데이터 가져오기
-df2 = pd.read_csv('C:/Users/82104/Desktop/train_data_nsmc_noun.csv')
 noun_list = df['Noun'].values
 verb_list = df['Verb'].values
 adj_list = df['Adjective'].values
+# 긍정, 부정 명사 데이터 가져오기
+df2 = pd.read_csv('C:/Users/82104/Desktop/train_data_nsmc_noun.csv')
 pos_noun_lst = df2['긍정'].values
 neg_noun_lst = df2['부정'].values
 #트레인 데이터에 대하여 품사 평균 개수 카운트
@@ -49,25 +45,19 @@ movie_real_number_audience = [204, 361, 475, 296, 160, 153, 819, 1626]
 movie_name_list = ["소울", "모가디슈", "남산의 부장들", "블랙위도우", "닥터두리틀", "외계인", "탑건:매버릭", "극한직업"]
 movie_num_list = ['1', '2', '3', '4', '5', '6', '7', '8']
 while True:
-    diff_noun = 10000000
-    n_i = 0
-    diff_verb = 10000000
-    v_i = 0
-    diff_adj = 10000000
-    a_i = 0
-    diff_total = 10000000
-    t_i = 0
-    diff_pos_noun = 1000000
-    pos_i = 0
-    diff_neg_noun = 1000000
-    neg_i = 0
+    diff_noun = 10000000; n_i = 0
+    diff_verb = 10000000; v_i = 0
+    diff_adj = 10000000; a_i = 0
+    diff_total = 10000000; t_i = 0
+    diff_pos_noun = 1000000; pos_i = 0
+    diff_neg_noun = 1000000; neg_i = 0
     # 입력 화면
     print("아래에 보이는 영화 중 예측을 원하는 영화의 번호를 입력하세요!")
     print("1. " + movie_name_list[0] + "   2. " + movie_name_list[1] + "   3. " + movie_name_list[2] + "   4. " + movie_name_list[3] + "   5. " + movie_name_list[4] + "   6. " + movie_name_list[5] + "   7. " + movie_name_list[6] + "   8. " + movie_name_list[7])
     movie_num = input()
     if movie_num in movie_num_list:
         movie_num = int(movie_num)
-        # 가장 오차가 적을 떄의 관객 수 찾기
+        # 가장 오차가 적을 떄를 기준으로 관객 수 예측
         for i in range(len(noun_list)):
             if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):    # 명사
                 diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
@@ -88,7 +78,7 @@ while True:
             if diff_neg_noun > abs(neg_noun_lst[i] - noun_nsmc[movie_num - 1][1]):  # 부정 명사
                 diff_neg_noun = abs(neg_noun_lst[i] - noun_nsmc[movie_num - 1][1])
                 neg_i = i
-        # 리스트화
+        # 인덱스 값 리스트화
         index_list = [n_i, v_i, a_i, t_i, pos_i, neg_i]
         # 딜레이
         print("'" + movie_name_list[movie_num - 1] + "'" + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
@@ -105,12 +95,12 @@ while True:
         print("\n다른 영화 예측: ""y""키",end='  ')
         print("프로그램 종료: ""n""키")
         key = input()
-        if key == 'n' or key == 'N':
+        if key == 'n' or key == 'N':    # 프로그램 종료 조건
             print("프로그램이 종료됩니다.")
             time.sleep(2)
             exit()
-        elif key == 'y' or key == 'Y':
+        elif key == 'y' or key == 'Y':  # 프로그램 계속 실행
             break
-        else:
+        else:   # 잘못된 입력 처리
             print("잘못된 입력입니다! 다시 입력해 주세요!")
             time.sleep(1)

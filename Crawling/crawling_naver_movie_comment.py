@@ -1,7 +1,5 @@
 # 영화 리뷰 크롤링 프로그램
-
 import time
-from os import write
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By

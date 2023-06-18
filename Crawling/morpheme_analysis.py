@@ -1,6 +1,5 @@
 # 형태소 분석 프로그램
 # 영화 별 명사, 동사, 형용사 수 저장
-
 from konlpy.tag import Okt
 import pandas as pd
 
