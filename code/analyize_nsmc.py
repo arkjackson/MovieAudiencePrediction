@@ -2,7 +2,7 @@ import pandas as pd
 from konlpy.tag import Okt
 
 # nsmc 데이터 불러오기
-raw_data = pd.read_csv('C:/Users/82104/Desktop/MovieAudiencePreddiction/Crawling/ratings.txt', header=0, delimiter='\t', quoting=3)
+raw_data = pd.read_csv('//ratings.txt', header=0, delimiter='\t', quoting=3)
 raw_data.head()
 # Open Korean Text: 오픈 소스 한국어 분석기. 과거 트위터 형태소 분석기.
 okt = Okt()
