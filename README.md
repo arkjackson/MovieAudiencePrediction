@@ -1,31 +1,32 @@
 # MovieAudiencePrediction
 
 * MovieAudiencePrediction
-    * [프로젝트 소개](#프로젝트-소개)
-      * [Train 데이터 영화](#학습-데이터-영화)
-      * [Test 데이터 영화](#테스트-데이터-영화)
+    * [Introduction](#Introduction)
+      * [Description](#Description)
+      * [Train data of movie](#Train-data-of-movie)
+      * [Test data of movie](#Test-data-of-movie)
     * [Requirements](#Requirements)
-    * [프로그램 사용법](#프로그램-사용법)
+    * [How to use](#How-to-use)
     * [Release](#Release)
     * [Contacts](#Contacts)
     * [License](#License)
 
 -----
 
-## 프로젝트 소개
+## Introduction
 
 구 네이버 영화 사이트 리뷰 데이터를 이용하여 관객수를 예측하는 프로그램입니다.
 
 KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/open-korean-text/open-korean-text)를 사용하였습니다.
 
-### Okt 사용 예시
+### Example
 
     from konlpy.tag import Okt
     okt = Okt()
     print(okt.morphs("아버지가 방에 들어가신다."))
     ['아버지', '가', '방', '에', '들어가신다', '.']
 
-### 설명
+### Description
 
 1. 영화별 리뷰 데이터를 수집후 [학습 데이터](#학습-데이터-영화)와 [테스트 데이터](#테스트-데이터-영화)로 분류
 
@@ -33,7 +34,7 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 3. 분석 결과를 활용하여 테스트 데이터 영화에 대하여 관객수 예측 수행
 
-#### 학습 데이터 영화
+#### Train data of movie
 
 - 1987
 
@@ -93,7 +94,7 @@ KoNLPy 한국어 처리 패키지의 [Okt(open-korean-text)](https://github.com/
 
 - 히트맨
 
-#### 테스트 데이터 영화
+#### Test data of movie
 
 - 소울
 
@@ -121,7 +122,7 @@ selenium == 4.10.0
 
 konlpy == 0.6.0
 
-## 프로그램 사용법
+## How to use
 
 release에 포함된 .exe파일을 다운 받아 실행시켜 사용할 수 있습니다.
 
