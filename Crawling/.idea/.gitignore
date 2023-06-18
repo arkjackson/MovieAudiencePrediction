@@ -1,3 +1,6 @@
 # 디폴트 무시된 파일
 /shelf/
 /workspace.xml
+Crawling/build/prediction_number_of_audience/
+*.spec
+*.exe
