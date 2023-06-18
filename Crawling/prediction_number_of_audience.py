@@ -5,8 +5,11 @@ import pandas as pd
 import time
 
 # 결과 출력 함수
+from pandas.io.formats.printing import adjoin
+
+
 def print_prediction_message(number_audience, idx_lst):
-    morpheme = ['명사', '동사', '형용사']
+    morpheme = ['명사', '동사', '형용사', '품사 평균 개수']
     for i in range(len(morpheme)):
         print("\n" + morpheme[i] + " 기준:", str(100 * idx_lst[i]) + '~' + str(100 * (idx_lst[i] + 1)) + "만 명", end=' ')
         if 100 * idx_lst[i] <= number_audience and number_audience < 100 * (idx_lst[i] + 1):
@@ -16,20 +19,36 @@ def print_prediction_message(number_audience, idx_lst):
         else:
             print("---> 예측 실패")
 
+#세 개의 품사 평균 계산
+def calculate_avg_number(lst):
+    res = []
+    for i in range(len(lst)):
+        res.append((lst[i][0] + lst[i][1] + lst[i][2]) / 3)
+    return res
+
 # 관객 수에 따라 품사수 저장
 df = pd.read_csv('C:/Users/82104/Desktop/morpheme_result.csv')
 noun_list = df['Noun'].values
 verb_list = df['Verb'].values
 adj_list = df['Adjective'].values
-diff_noun = 100000
+#트레인 데이터에 대하여 품사 평균 개수 카운트
+avg_mor_train_list = []
+for i in range(len(noun_list)):
+    avg_mor_train_list.append((noun_list[i] + verb_list[i] + adj_list[i])/3)
+diff_noun = 10000000
 n_i = 0
-diff_verb = 100000
+diff_verb = 10000000
 v_i = 0
-diff_adj = 100000
+diff_adj = 10000000
 a_i = 0
+diff_total = 10000000
+t_i = 0
+
 # 예측 대상에 대한 형태소 분석 결과
 movie_mor_list = [[64679, 25597, 15681], [111933, 36637, 25878], [129314, 37999, 22231],
                   [50165, 13969, 10777], [23362, 7283, 6422], [117041, 42908, 32836], [173520, 55771, 30931], [263108, 102628, 63526]]
+#품사 평균 개수 계산
+avg_mor_test_list = calculate_avg_number(movie_mor_list)
 # 예측 대상의 실제 관객수
 movie_real_number_audience = [204, 361, 475, 296, 160, 153, 819, 1626]
 # 예측 대상
@@ -44,17 +63,20 @@ while True:
         movie_num = int(movie_num)
         # 가장 오차가 적을 떄의 관객 수 찾기
         for i in range(len(noun_list)):
-            if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):
+            if diff_noun > abs(movie_mor_list[movie_num - 1][0] - noun_list[i]):    # 명사
                 diff_noun = abs(movie_mor_list[movie_num - 1][0] - noun_list[i])
                 n_i = i
-            if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):
+            if diff_verb > abs(movie_mor_list[movie_num - 1][1] - verb_list[i]):    # 동사
                 diff_verb = abs(movie_mor_list[movie_num - 1][1] - verb_list[i])
                 v_i = i
-            if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):
+            if diff_adj > abs(movie_mor_list[movie_num - 1][2] - adj_list[i]):  # 형용사
                 diff_adj = abs(movie_mor_list[movie_num - 1][2] - adj_list[i])
                 a_i = i
+            if diff_total > abs(avg_mor_test_list[movie_num - 1] - avg_mor_train_list[i]):  # 총 개수
+                diff_total = abs(avg_mor_test_list[movie_num - 1] - avg_mor_train_list[i])
+                t_i = i
         # 리스트화
-        index_list = [n_i, v_i, a_i]
+        index_list = [n_i, v_i, a_i, t_i]
         # 딜레이
         print("'" + movie_name_list[movie_num - 1] + "'" + " 관객 수를 예측하고 있습니다! 잠시만 기다려주세요!")
         time.sleep(2)
